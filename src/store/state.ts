@@ -3,10 +3,8 @@ import { Organization } from "../types/Organization";
 import { OrganizationShare, ReferralType } from "../types/Temp";
 
 export interface State {
-  donation: Donation;
   layout: Layout;
   referrals: Referrals;
-  error: Error;
 }
 
 export interface Layout {

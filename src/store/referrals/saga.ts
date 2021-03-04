@@ -1,10 +1,9 @@
 import { SagaIterator } from "redux-saga";
-import { call, put, select } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 import { Action } from "typescript-fsa";
 import { API_URL } from "../../config/api";
 import { IServerResponse, ReferralData, ReferralType } from "../../types/Temp";
 import { nextPane } from "../layout/actions";
-import { State } from "../state";
 import { fetchReferralsAction, submitReferralAction } from "./actions";
 
 export function* fetchReferrals(action: Action<undefined>): SagaIterator<void> {
@@ -31,12 +30,10 @@ export function* fetchReferrals(action: Action<undefined>): SagaIterator<void> {
 export function* submitReferral(
   action: Action<ReferralData>
 ): SagaIterator<void> {
-  const donorID = yield select((state: State) => state.donation.donor?.donorID);
-
   try {
     const data = {
       referralID: action.payload.referralID,
-      donorID,
+      donorID: 1,
       comment: action.payload.comment,
     };
 

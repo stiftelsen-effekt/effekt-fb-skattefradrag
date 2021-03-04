@@ -9,17 +9,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { Widget } from "./components/Widget";
 import * as serviceWorker from "./serviceWorker";
 import { State } from "./store/state";
-import { donationReducer } from "./store/donation/reducer";
-import { layoutReducer } from "./store/layout/reducer";
-import { errorReducer } from "./store/error/reducer";
 import { Host } from "./components/Host";
 import watchAll from "./store/root.saga";
 import { referralReducer } from "./store/referrals/reducer";
+import { layoutReducer } from "./store/layout/reducer";
 
 const rootReducer = combineReducers<State>({
-  donation: donationReducer,
   layout: layoutReducer,
-  error: errorReducer,
   referrals: referralReducer,
 });
 
