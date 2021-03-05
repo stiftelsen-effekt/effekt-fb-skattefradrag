@@ -1,10 +1,13 @@
-import { PaymentMethod, RecurringDonation, ShareType } from "../types/Enums";
 import { Organization } from "../types/Organization";
-import { OrganizationShare, ReferralType } from "../types/Temp";
+import { ReferralType } from "../types/Temp";
 
 export interface State {
   layout: Layout;
   referrals: Referrals;
+}
+
+export interface Referrals {
+  referrals?: [ReferralType];
 }
 
 export interface Layout {
@@ -15,55 +18,6 @@ export interface Layout {
   loading: boolean;
   organizations?: Organization[];
 }
-
-export interface DonationInput {
-  method?: PaymentMethod;
-  sum?: number;
-  shareType: ShareType;
-  recurring: RecurringDonation;
-  donor?: Donor;
-  shares: OrganizationShare[];
-}
-
-export interface Donation extends DonationInput {
-  kid?: string;
-  paymentProviderURL?: string;
-  isValid: boolean;
-}
-
-export interface RegisterDonationObject {
-  donor: Donor;
-  method: PaymentMethod;
-  recurring: RecurringDonation;
-  amount: number;
-  organizations?: OrganizationShare[];
-}
-
-export interface DonorInput {
-  name?: string;
-  email?: string;
-  taxDeduction?: boolean;
-  ssn?: number;
-  newsletter?: boolean;
-}
-
-export interface Donor extends DonorInput {
-  donorID?: number;
-}
-
-export interface Referrals {
-  referrals?: [ReferralType];
-}
-
-export interface DonorFormValues extends DonorInput {
-  privacyPolicy: boolean;
-}
-
-export interface Share {
-  organizationID: number;
-  share: number;
-}
-
 export interface Error {
   isVisible: boolean;
   message: string;
