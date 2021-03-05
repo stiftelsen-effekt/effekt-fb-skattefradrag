@@ -1,8 +1,13 @@
 import { Organization } from "../types/Organization";
+import { ReferralType } from "../types/Temp";
 
 export interface State {
   layout: Layout;
-  referrals: unknown;
+  referrals: Referrals;
+}
+
+export interface Referrals {
+  referrals?: [ReferralType];
 }
 
 export interface Layout {
