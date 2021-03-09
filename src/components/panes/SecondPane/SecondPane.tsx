@@ -49,7 +49,13 @@ export const SecondPane: React.FC = () => {
             name="name"
             type="text"
             placeholder="Navn"
-            innerRef={register({ required: true, minLength: 3 })}
+            innerRef={register({
+              required: true,
+              validate: (val) => {
+                const trimmed = val.trim();
+                return trimmed.length > 2;
+              },
+            })}
           />
           {nameErrorAnimation && <ErrorField text="Ugyldig navn" />}
           <TextInput
@@ -61,10 +67,7 @@ export const SecondPane: React.FC = () => {
               required: false,
               validate: (val) => {
                 const trimmed = val.toString().trim();
-                return (
-                  Validate.isInt(trimmed) &&
-                  (trimmed.length === 9 || trimmed.length === 11)
-                );
+                return Validate.isInt(trimmed) && trimmed.length === 11;
               },
             })}
           />
