@@ -21,6 +21,11 @@ export const Paragraph = styled.p`
   }
 `;
 
+export const CenteredParagraph = styled.p`
+  text-align: center;
+  margin: 0;
+`;
+
 export const OrangeLink = styled.a`
   color: #fb8f29;
   text-decoration: none;

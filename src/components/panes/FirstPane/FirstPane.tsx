@@ -11,6 +11,7 @@ import { NextButton } from "../../shared/Buttons/NavigationButtons.style";
 import { nextPane } from "../../../store/layout/actions";
 import { TextInput } from "../../shared/Input/TextInput";
 import { ErrorField } from "../../shared/Error/ErrorField";
+import { InfoText } from "./MethodPane.style";
 
 interface FormValues {
   email: string;
@@ -43,6 +44,7 @@ export const FirstPane: React.FC = () => {
 
   return (
     <Pane>
+      <InfoText>Les mer om skattefradrag for donasjoner under</InfoText>
       <DonorForm onSubmit={handleSubmit(paneSubmitted)}>
         <InputFieldWrapper>
           <TextInput

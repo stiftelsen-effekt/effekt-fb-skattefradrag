@@ -11,6 +11,7 @@ import { NextButton } from "../../shared/Buttons/NavigationButtons.style";
 import { nextPane } from "../../../store/layout/actions";
 import { TextInput } from "../../shared/Input/TextInput";
 import { ErrorField } from "../../shared/Error/ErrorField";
+import { InfoText } from "../FirstPane/MethodPane.style";
 
 interface FormValues {
   name: string;
@@ -43,6 +44,7 @@ export const SecondPane: React.FC = () => {
 
   return (
     <Pane>
+      <InfoText>Du trenger kun å fylle ut dette skjemaet én gang</InfoText>
       <DonorForm onSubmit={handleSubmit(paneSubmitted)}>
         <InputFieldWrapper>
           <TextInput
@@ -71,9 +73,7 @@ export const SecondPane: React.FC = () => {
               },
             })}
           />
-          {ssnError && (
-            <ErrorField text="Personnummer må være 9 eller 11 siffer" />
-          )}
+          {ssnError && <ErrorField text="Personnummer må være 11 siffer" />}
         </InputFieldWrapper>
 
         <NextButton type="submit" disabled={nextDisabled}>
