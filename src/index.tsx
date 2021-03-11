@@ -11,12 +11,12 @@ import * as serviceWorker from "./serviceWorker";
 import { State } from "./store/state";
 import { Host } from "./components/Host";
 import watchAll from "./store/root.saga";
-import { referralReducer } from "./store/referrals/reducer";
+import { paymentInfoReducer } from "./store/paymentInfo/reducer";
 import { layoutReducer } from "./store/layout/reducer";
 
 const rootReducer = combineReducers<State>({
   layout: layoutReducer,
-  referrals: referralReducer,
+  paymentInfo: paymentInfoReducer,
 });
 
 const sagaMiddleware = createSagaMiddleware();

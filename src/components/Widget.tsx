@@ -10,7 +10,6 @@ export const Widget: React.FC = () => {
     <div id="center-widget">
       <div id="widget">
         <Carousel>
-          <ResultPane />
           <FirstPane />
           <SecondPane />
           <ResultPane />

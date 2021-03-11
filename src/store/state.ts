@@ -1,22 +1,21 @@
 import { Organization } from "../types/Organization";
-import { ReferralType } from "../types/Temp";
 
 export interface State {
   layout: Layout;
-  referrals: Referrals;
+  paymentInfo: PaymentInfo;
 }
 
-export interface Referrals {
-  referrals?: [ReferralType];
+export interface PaymentInfo {
+  paymentID?: string;
+  email?: string;
+  ssn?: string;
+  full_name?: string;
 }
 
 export interface Layout {
-  privacyPolicy: boolean;
   paneNumber: number;
-  answeredReferral?: boolean;
   height: number;
   loading: boolean;
-  organizations?: Organization[];
 }
 export interface Error {
   isVisible: boolean;
@@ -24,9 +23,7 @@ export interface Error {
 }
 
 export enum PaneNumber {
-  MethodPane = 0,
-  DonorPane = 1,
-  DonationPane = 2,
-  ReferralPane = 3,
-  ResultPane = 4,
+  FirstPane = 0,
+  SecondPane = 1,
+  ResultPane = 2,
 }
