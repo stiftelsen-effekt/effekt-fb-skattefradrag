@@ -63,7 +63,7 @@ export const FirstPane: React.FC = () => {
   return (
     <Pane>
       <InfoText>
-        Les mer om skattefradrag for donasjoner under skjemaet
+        Fyll ut skjemaet for å få skattefradrag på Facebook-donasjoner
       </InfoText>
       {!loadingAnimation && (
         <DonorForm onSubmit={handleSubmit(paneSubmitted)}>
