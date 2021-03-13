@@ -1,10 +1,10 @@
 import { Reducer } from "redux";
 import { isType } from "typescript-fsa";
-import { Referrals } from "../state";
-import { fetchReferralsAction } from "./actions";
-import { ReferralActionTypes } from "./types";
+import { PaymentInfo } from "../state";
+import { registerPaymentAction } from "./actions";
+import { PaymentInfoActionTypes } from "./types";
 
-const initialState: Referrals = {};
+const initialState: PaymentInfo = {};
 
 /**
  * The reducer is a pure function that takes in the previous state,
@@ -14,11 +14,11 @@ const initialState: Referrals = {};
  * @param {LayoutActionTypes} action An action mutating the current Layout state
  */
 
-export const referralReducer: Reducer<Referrals, ReferralActionTypes> = (
-  state: Referrals = initialState,
-  action: ReferralActionTypes
-) => {
-  if (isType(action, fetchReferralsAction.done)) {
+export const paymentInfoReducer: Reducer<
+  PaymentInfo,
+  PaymentInfoActionTypes
+> = (state: PaymentInfo = initialState, action: PaymentInfoActionTypes) => {
+  if (isType(action, registerPaymentAction.done)) {
     return {
       ...state,
       referrals: action.payload.result,

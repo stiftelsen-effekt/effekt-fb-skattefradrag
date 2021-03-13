@@ -1,12 +1,23 @@
 import React from "react";
-import { Pane, PaneContainer } from "../Panes.style";
+import { NextButton } from "../../shared/Buttons/NavigationButtons.style";
+import { CenteredParagraph } from "../../Widget.style";
+import { BlackTitle } from "../FirstPane/MethodPane.style";
+import { Pane } from "../Panes.style";
 
 export const ResultPane: React.FC = () => {
   return (
     <Pane>
-      <PaneContainer>
-        <h2>Ditt svar er nå registrert</h2>
-      </PaneContainer>
+      <BlackTitle>Donasjonen din er nå registert for skattefradrag!</BlackTitle>
+      <CenteredParagraph>
+        Takk for at du donerer gjennom gieffektivt.no!
+      </CenteredParagraph>
+      <NextButton
+        onClick={() => {
+          window.location.href = "https://gieffektivt.no/";
+        }}
+      >
+        Tilbake til hovedsiden
+      </NextButton>
     </Pane>
   );
 };

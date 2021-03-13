@@ -21,7 +21,7 @@ export interface TextInputWrapperProps {
 
 export const TextInputWrapper = styled.div`
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-size: 15px;
   border: 1px solid ${gray18};
   border-radius: 5px;

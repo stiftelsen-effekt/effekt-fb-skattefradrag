@@ -5,11 +5,19 @@ export const DECREMENT_CURRENT_PANE = "DECREMENT_CURRENT_PANE";
 export const SET_ANSWERED_REFERRAL = "SET_ANSWERRED_REFERRAL";
 export const SET_HEIGHT = "SET_HEIGHT";
 export const SET_LOADING = "SET_LOADING";
+export const SHOW_SECOND_PANE = "SHOW_SECOND_PANE";
 
 interface SelectPrivacyPolicy {
   type: typeof SELECT_PRIVACY_POLICY;
   payload: {
     privacyPolicy: boolean;
+  };
+}
+
+interface ShowSecondPane {
+  type: typeof SHOW_SECOND_PANE;
+  payload: {
+    showPane: boolean;
   };
 }
 
@@ -49,6 +57,7 @@ interface SetLoading {
 
 export type LayoutActionTypes =
   | SelectPrivacyPolicy
+  | ShowSecondPane
   | SetPaneNumber
   | IncrementCurrentPane
   | DecrementCurrentPane
