@@ -39,6 +39,16 @@ export const SecondPane: React.FC = () => {
   }, [dispatch, errors, watchAllFields]);
 
   const paneSubmitted = () => {
+    // TODO: Create new donor with data from redux state
+
+    // TODO: Register PaymentID
+
+    // dispatch(
+    //   registerPaymentAction.started({
+    //     paymentID: watchAllFields.paymentID,
+    //     email: watchAllFields.email,
+    //   })
+    // );
     dispatch(nextPane());
   };
 

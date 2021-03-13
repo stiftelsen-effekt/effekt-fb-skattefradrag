@@ -18,6 +18,8 @@ import { LoadingCircle } from "../../shared/LoadingCircle/LoadingCircle";
 interface FormValues {
   email: string;
   paymentID: string;
+  name: string;
+  ssn: string;
 }
 
 export const FirstPane: React.FC = () => {
@@ -25,6 +27,8 @@ export const FirstPane: React.FC = () => {
   const [nextDisabled, setNextDisabled] = useState(true);
   const [paymentIDError, setPaymentIDError] = useState(false);
   const [emailError, setEmailError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [ssnError, setSsnError] = useState(false);
   const [loadingAnimation, setLoadingAnimation] = useState(false);
 
   const { register, watch, errors, handleSubmit } = useForm<FormValues>();
@@ -33,6 +37,8 @@ export const FirstPane: React.FC = () => {
   useEffect(() => {
     errors.paymentID ? setPaymentIDError(true) : setPaymentIDError(false);
     errors.email ? setEmailError(true) : setEmailError(false);
+    errors.name ? setNameError(true) : setNameError(false);
+    errors.ssn ? setSsnError(true) : setSsnError(false);
 
     if (Object.keys(errors).length === 0) {
       setNextDisabled(false);
@@ -47,6 +53,8 @@ export const FirstPane: React.FC = () => {
       registerPaymentAction.started({
         paymentID: watchAllFields.paymentID,
         email: watchAllFields.email,
+        full_name: watchAllFields.name,
+        ssn: watchAllFields.ssn,
       })
     );
     dispatch(nextPane());
@@ -54,10 +62,25 @@ export const FirstPane: React.FC = () => {
 
   return (
     <Pane>
-      <InfoText>Les mer om skattefradrag for donasjoner under</InfoText>
+      <InfoText>
+        Les mer om skattefradrag for donasjoner under skjemaet
+      </InfoText>
       {!loadingAnimation && (
         <DonorForm onSubmit={handleSubmit(paneSubmitted)}>
           <InputFieldWrapper>
+            <TextInput
+              name="name"
+              type="text"
+              placeholder="Navn"
+              innerRef={register({
+                required: true,
+                validate: (val) => {
+                  const trimmed = val.trim();
+                  return trimmed.length > 2;
+                },
+              })}
+            />
+            {nameError && <ErrorField text="Ugyldig navn" />}
             <TextInput
               name="email"
               type="text"
@@ -71,6 +94,20 @@ export const FirstPane: React.FC = () => {
               })}
             />
             {emailError && <ErrorField text="Ugyldig epost" />}
+            <TextInput
+              name="ssn"
+              type="number"
+              inputMode="numeric"
+              placeholder="Personnummer"
+              innerRef={register({
+                required: false,
+                validate: (val) => {
+                  const trimmed = val.toString().trim();
+                  return Validate.isInt(trimmed) && trimmed.length === 11;
+                },
+              })}
+            />
+            {ssnError && <ErrorField text="Personnummer må være 11 siffer" />}
             <TextInput
               name="paymentID"
               type="number"

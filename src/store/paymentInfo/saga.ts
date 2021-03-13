@@ -3,7 +3,6 @@ import { call, put } from "redux-saga/effects";
 import { Action } from "typescript-fsa";
 import { API_URL } from "../../config/api";
 import { IServerResponse, RegisterPaymentData } from "../../types/Temp";
-import { nextPane } from "../layout/actions";
 import { registerPaymentAction } from "./actions";
 
 export function* registerPaymentFB(
@@ -13,6 +12,8 @@ export function* registerPaymentFB(
     const data = {
       paymentID: action.payload.paymentID,
       email: action.payload.email,
+      full_name: action.payload.full_name,
+      ssn: action.payload.ssn,
     };
 
     const request = yield call(fetch, `${API_URL}/facebook/register/payment`, {
@@ -34,10 +35,6 @@ export function* registerPaymentFB(
         result: result.content as boolean,
       })
     );
-
-    if (result.content === true) {
-      yield put(nextPane());
-    }
   } catch (ex) {
     yield put(
       registerPaymentAction.failed({ params: action.payload, error: ex })

@@ -5,4 +5,6 @@ export interface IServerResponse<T> {
 export interface RegisterPaymentData {
   paymentID: string;
   email: string;
+  full_name: string;
+  ssn: string;
 }
