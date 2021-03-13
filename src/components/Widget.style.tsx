@@ -23,7 +23,8 @@ export const Paragraph = styled.p`
 
 export const CenteredParagraph = styled.p`
   text-align: center;
-  margin: 0;
+  margin: 0px;
+  margin-bottom: 20px;
 `;
 
 export const OrangeLink = styled.a`

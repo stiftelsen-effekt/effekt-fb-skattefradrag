@@ -17,7 +17,7 @@ export const BlackTitle = styled.p`
   white-space: normal;
   font-size: 16px;
   line-height: 150%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-weight: bold;
 `;
 
