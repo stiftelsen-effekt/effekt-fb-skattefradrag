@@ -16,6 +16,7 @@ export const BlackTitle = styled.p`
   text-align: center;
   white-space: normal;
   font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
   line-height: 150%;
   margin-bottom: 20px;
   font-weight: bold;
