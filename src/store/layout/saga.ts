@@ -28,3 +28,26 @@ export function* fetchOrganizations(
     );
   }
 }
+
+export function* getDonorByEmail(
+  action: Action<undefined>
+): SagaIterator<void> {
+  try {
+    const request = yield call(fetch, `${API_URL}/organizations/active/`);
+    const result: IServerResponse<Organization[]> = yield call(
+      request.json.bind(request)
+    );
+    if (result.status !== 200) throw new Error(result.content as string);
+
+    yield put(
+      fetchOrganizationsAction.done({
+        params: action.payload,
+        result: result.content as Organization[],
+      })
+    );
+  } catch (ex) {
+    yield put(
+      fetchOrganizationsAction.failed({ params: action.payload, error: ex })
+    );
+  }
+}

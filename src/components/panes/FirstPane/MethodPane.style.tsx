@@ -12,9 +12,19 @@ export const TextWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
+export const BlackTitle = styled.p`
+  text-align: center;
+  white-space: normal;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 150%;
+  margin-bottom: 20px;
+  font-weight: bold;
+`;
+
 export const InfoText = styled.p`
   white-space: normal;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 150%;
   color: ${gray20};
   margin: 0;
@@ -23,17 +33,4 @@ export const InfoText = styled.p`
 export const RecurringSelectWrapper = styled.div`
   padding-top: 10px;
   padding-bottom: 15px;
-`;
-
-export const VippsComingSoon = styled.span`
-  position: absolute;
-  font-style: italic;
-  opacity: 0.5;
-  left: 175px;
-  bottom: 160px;
-  word-wrap: normal;
-  @media only screen and (max-width: 400px) {
-    left: 35px;
-    bottom: 135px;
-  }
 `;
