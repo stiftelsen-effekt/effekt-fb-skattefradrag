@@ -23,7 +23,7 @@ export const ResultPane: React.FC = () => {
 
       <NextButton
         onClick={() => {
-          window.location.href = "https://gieffektivt.no/";
+          window.location.replace("https://gieffektivt.no/");
         }}
       >
         Tilbake til hovedsiden
