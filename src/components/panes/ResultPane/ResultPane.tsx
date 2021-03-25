@@ -22,11 +22,7 @@ export const ResultPane: React.FC = () => {
         Takk for at du donerer gjennom gieffektivt.no!
       </InfoText>
 
-      <LinkWrapper
-        href="https://gieffektivt.no"
-        target="_blank"
-        rel="noreferrer"
-      >
+      <LinkWrapper href="https://gieffektivt.no" rel="noreferrer">
         <NextButton>Tilbake til hovedsiden</NextButton>
       </LinkWrapper>
     </Pane>

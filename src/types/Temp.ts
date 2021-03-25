@@ -7,4 +7,5 @@ export interface RegisterPaymentData {
   email: string;
   full_name: string;
   ssn: string;
+  newsletter: string;
 }
