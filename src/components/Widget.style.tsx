@@ -12,7 +12,7 @@ export const Paragraph = styled.p`
   text-align: left;
   font-family: "Roboto";
   color: #020202;
-  max-width: 850px;
+  max-width: 600px;
   word-wrap: normal;
   @media only screen and (max-width: 410px) {
     margin-top: 10px;

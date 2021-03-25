@@ -25,7 +25,7 @@ export const TextField = styled.input`
 `;
 
 export const CheckBoxWrapper = styled.div`
-  display: block;
+  display: flex;
   height: 40px;
 `;
 
