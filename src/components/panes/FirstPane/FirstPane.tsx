@@ -5,7 +5,11 @@ import { useDispatch } from "react-redux";
 import Validate from "validator";
 import { useForm } from "react-hook-form";
 import { Pane } from "../Panes.style";
-import { InputFieldWrapper } from "../Forms.style";
+import {
+  CheckBoxWrapper,
+  HiddenCheckBox,
+  InputFieldWrapper,
+} from "../Forms.style";
 import { DonorForm } from "../SecondPane/DonorPane.style";
 import { NextButton } from "../../shared/Buttons/NavigationButtons.style";
 import { nextPane } from "../../../store/layout/actions";
@@ -14,12 +18,14 @@ import { ErrorField } from "../../shared/Error/ErrorField";
 import { InfoText } from "./MethodPane.style";
 import { registerPaymentAction } from "../../../store/paymentInfo/actions";
 import { LoadingCircle } from "../../shared/LoadingCircle/LoadingCircle";
+import { CustomCheckBox } from "./CustomCheckBox";
 
 interface FormValues {
   email: string;
   paymentID: string;
   name: string;
   ssn: string;
+  newsletter: boolean;
 }
 
 export const FirstPane: React.FC = () => {
@@ -30,6 +36,7 @@ export const FirstPane: React.FC = () => {
   const [nameError, setNameError] = useState(false);
   const [ssnError, setSsnError] = useState(false);
   const [loadingAnimation, setLoadingAnimation] = useState(false);
+  const [newsletterChecked, setNewsletterChecked] = useState(false);
 
   const { register, watch, errors, handleSubmit } = useForm<FormValues>();
   const watchAllFields = watch();
@@ -48,6 +55,10 @@ export const FirstPane: React.FC = () => {
   }, [dispatch, errors, watchAllFields]);
 
   const paneSubmitted = () => {
+    // eslint-disable-next-line no-console
+    console.log(watchAllFields.newsletter);
+    // eslint-disable-next-line no-console
+    console.log(watchAllFields.newsletter === true ? "1" : "0");
     setLoadingAnimation(true);
     dispatch(
       registerPaymentAction.started({
@@ -55,6 +66,7 @@ export const FirstPane: React.FC = () => {
         email: watchAllFields.email,
         full_name: watchAllFields.name,
         ssn: watchAllFields.ssn,
+        newsletter: watchAllFields.newsletter === true ? "1" : "0",
       })
     );
     dispatch(nextPane());
@@ -122,6 +134,23 @@ export const FirstPane: React.FC = () => {
               <ErrorField text="Betalings-ID må være 16 siffer" />
             )}
           </InputFieldWrapper>
+          <CheckBoxWrapper>
+            <HiddenCheckBox
+              data-cy="checkboxNewsletter"
+              name="newsletter"
+              type="checkbox"
+              ref={register}
+              onChange={() => {
+                setNewsletterChecked(!newsletterChecked);
+                (document.activeElement as HTMLElement).blur();
+              }}
+            />
+            <CustomCheckBox
+              label="Jeg ønsker å melde meg på nyhetsbrevet"
+              mobileLabel="Jeg vil melde meg på nyhetsbrevet"
+              checked={newsletterChecked}
+            />
+          </CheckBoxWrapper>
 
           <NextButton type="submit" disabled={nextDisabled}>
             Neste

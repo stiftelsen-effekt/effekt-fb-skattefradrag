@@ -3,6 +3,7 @@ import { NextButton } from "../../shared/Buttons/NavigationButtons.style";
 import { OrangeLink } from "../../Widget.style";
 import { BlackTitle, InfoText } from "../FirstPane/MethodPane.style";
 import { Pane } from "../Panes.style";
+import { LinkWrapper } from "./ResultPane.style";
 
 export const ResultPane: React.FC = () => {
   return (
@@ -21,13 +22,9 @@ export const ResultPane: React.FC = () => {
         Takk for at du donerer gjennom gieffektivt.no!
       </InfoText>
 
-      <NextButton
-        onClick={() => {
-          window.location.replace("https://gieffektivt.no/");
-        }}
-      >
-        Tilbake til hovedsiden
-      </NextButton>
+      <LinkWrapper href="https://gieffektivt.no" rel="noreferrer">
+        <NextButton>Tilbake til hovedsiden</NextButton>
+      </LinkWrapper>
     </Pane>
   );
 };

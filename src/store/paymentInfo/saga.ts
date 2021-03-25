@@ -14,6 +14,7 @@ export function* registerPaymentFB(
       email: action.payload.email,
       full_name: action.payload.full_name,
       ssn: action.payload.ssn,
+      newsletter: action.payload.newsletter,
     };
 
     const request = yield call(fetch, `${API_URL}/facebook/register/payment`, {
