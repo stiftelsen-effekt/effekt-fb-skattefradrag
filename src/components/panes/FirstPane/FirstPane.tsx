@@ -86,7 +86,7 @@ export const FirstPane: React.FC = () => {
               placeholder="Navn"
               innerRef={register({
                 required: true,
-                validate: (val) => {
+                validate: (val: string) => {
                   const trimmed = val.trim();
                   return trimmed.length > 2;
                 },
@@ -99,7 +99,7 @@ export const FirstPane: React.FC = () => {
               placeholder="Epost"
               innerRef={register({
                 required: true,
-                validate: (val) => {
+                validate: (val: string) => {
                   const trimmed = val.trim();
                   return Validate.isEmail(trimmed);
                 },
@@ -110,16 +110,16 @@ export const FirstPane: React.FC = () => {
               name="ssn"
               type="number"
               inputMode="numeric"
-              placeholder="Personnummer"
+              placeholder="Fødselsnummer"
               innerRef={register({
                 required: false,
-                validate: (val) => {
+                validate: (val: string) => {
                   const trimmed = val.toString().trim();
                   return Validate.isInt(trimmed) && trimmed.length === 11;
                 },
               })}
             />
-            {ssnError && <ErrorField text="Personnummer må være 11 siffer" />}
+            {ssnError && <ErrorField text="Fødselsnummer må være 11 siffer" />}
             <TextInput
               name="paymentID"
               type="number"

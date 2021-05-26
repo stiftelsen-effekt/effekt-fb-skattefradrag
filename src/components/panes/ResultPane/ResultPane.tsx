@@ -12,7 +12,7 @@ export const ResultPane: React.FC = () => {
         Donasjonene dine er nå registert for skattefradrag
       </BlackTitle>
       <InfoText>
-        {`Hvis du ønsker å se hvor mye du har donert hittil i år, gå til `}
+        {`Hvis du ønsker å se hvor mye du har donert hittil, gå til `}
         <OrangeLink href="https://gieffektivt.no/historikk" target="_blank">
           https://gieffektivt.no/historikk
         </OrangeLink>
@@ -23,7 +23,7 @@ export const ResultPane: React.FC = () => {
       </InfoText>
 
       <LinkWrapper href="https://gieffektivt.no" rel="noreferrer">
-        <NextButton>Tilbake til hovedsiden</NextButton>
+        <NextButton>Tilbake til gieffektivt.no</NextButton>
       </LinkWrapper>
     </Pane>
   );
