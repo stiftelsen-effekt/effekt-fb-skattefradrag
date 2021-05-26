@@ -23,7 +23,7 @@ export const ResultPane: React.FC = () => {
       </InfoText>
 
       <LinkWrapper href="https://gieffektivt.no" rel="noreferrer">
-        <NextButton>Tilbake til gieffektivt.no</NextButton>
+        <NextButton>Tilbake til forsiden</NextButton>
       </LinkWrapper>
     </Pane>
   );
