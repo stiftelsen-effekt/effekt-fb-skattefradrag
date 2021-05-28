@@ -110,16 +110,21 @@ export const FirstPane: React.FC = () => {
               name="ssn"
               type="number"
               inputMode="numeric"
-              placeholder="Fødselsnummer"
+              placeholder="Fødselsnummer eller org.nr."
               innerRef={register({
                 required: false,
                 validate: (val: string) => {
                   const trimmed = val.toString().trim();
-                  return Validate.isInt(trimmed) && trimmed.length === 11;
+                  if (Validate.isInt(trimmed)) {
+                    return trimmed.length === 9 || trimmed.length === 11;
+                  }
+                  return false;
                 },
               })}
             />
-            {ssnError && <ErrorField text="Fødselsnummer må være 11 siffer" />}
+            {ssnError && (
+              <ErrorField text="Må være 11 (f.nr.) eller 9 (org.nr.) siffer" />
+            )}
             <TextInput
               name="paymentID"
               type="number"
